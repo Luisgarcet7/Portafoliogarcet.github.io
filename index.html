@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luis Adrián Garcét Ramírez | Web Developer</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+overflow-x:hidden;
+}
+
+/* PARTICULAS */
+
+#particles{
+position:fixed;
+width:100%;
+height:100%;
+z-index:-1;
+}
+
+/* NAVBAR */
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 8%;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+position:sticky;
+top:0;
+z-index:100;
+}
+
+nav h1{
+color:#38bdf8;
+font-size:20px;
+}
+
+nav ul{
+display:flex;
+gap:25px;
+list-style:none;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+font-size:15px;
+}
+
+/* MENU MOVIL */
+
+.menu-btn{
+display:none;
+font-size:28px;
+cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+text-align:center;
+padding:90px 20px;
+}
+
+.hero h2{
+font-size:42px;
+margin-bottom:10px;
+}
+
+.hero p{
+max-width:600px;
+margin:auto;
+font-size:18px;
+}
+
+/* SECCIONES */
+
+section{
+padding:80px 10%;
+}
+
+.title{
+text-align:center;
+margin-bottom:50px;
+font-size:32px;
+color:#38bdf8;
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+/* TARJETAS */
+
+.card{
+background:#020617;
+padding:30px;
+border-radius:12px;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+/* CONTACTO */
+
+.contact{
+text-align:center;
+font-size:20px;
+line-height:2;
+}
+
+.contact strong{
+color:#38bdf8;
+}
+
+footer{
+text-align:center;
+padding:30px;
+background:#020617;
+}
+
+/* ANIMACIONES */
+
+.reveal{
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+
+.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+nav ul{
+position:absolute;
+top:70px;
+left:0;
+width:100%;
+background:#020617;
+flex-direction:column;
+text-align:center;
+display:none;
+padding:20px 0;
+}
+
+nav ul.show{
+display:flex;
+}
+
+.menu-btn{
+display:block;
+}
+
+.hero h2{
+font-size:30px;
+}
+
+.hero p{
+font-size:16px;
+}
+
+section{
+padding:60px 20px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<nav>
+
+<h1>Luis Garcet</h1>
+
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+<ul id="menu">
+<li><a href="#sobre">Sobre</a></li>
+<li><a href="#servicios">Servicios</a></li>
+<li><a href="#proyectos">Proyectos</a></li>
+<li><a href="#contacto">Contacto</a></li>
+</ul>
+
+</nav>
+
+<section class="hero">
+
+<h2>Luis Adrián Garcét Ramírez</h2>
+
+<p>
+Desarrollador Web Freelancer especializado en HTML, CSS y JavaScript.
+Creo páginas web modernas, rápidas y económicas para empresas y emprendedores.
+</p>
+
+</section>
+
+<section id="sobre">
+
+<h2 class="title reveal">Sobre mí</h2>
+
+<div class="card reveal">
+
+<p>
+Soy programador freelancer con pasión por el desarrollo web.
+Creo sitios web rápidos, modernos y optimizados para cualquier dispositivo.
+Trabajo con clientes en proyectos pequeños, medianos y grandes.
+</p>
+
+</div>
+
+</section>
+
+<section id="servicios">
+
+<h2 class="title reveal">Servicios</h2>
+
+<div class="grid">
+
+<div class="card reveal">
+<h3>Desarrollo Web</h3>
+<p>Creación de páginas web modernas y profesionales.</p>
+</div>
+
+<div class="card reveal">
+<h3>Optimización Web</h3>
+<p>Mejora de velocidad y rendimiento.</p>
+</div>
+
+<div class="card reveal">
+<h3>Diseño Responsive</h3>
+<p>Webs adaptadas a móvil, tablet y ordenador.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="proyectos">
+
+<h2 class="title reveal">Proyectos</h2>
+
+<div class="grid">
+
+<div class="card reveal">
+<h3>Sistema Inventario</h3>
+<p>Aplicación web para control de productos.</p>
+</div>
+
+<div class="card reveal">
+<h3>Página Comercial</h3>
+<p>Sitio web moderno para negocios.</p>
+</div>
+
+<div class="card reveal">
+<h3>App Contabilidad</h3>
+<p>Aplicación web para finanzas.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="contacto">
+
+<h2 class="title reveal">Contacto</h2>
+
+<div class="contact reveal">
+
+<p>
+Si tienes un proyecto o necesitas una página web profesional,
+puedes contactarme.
+</p>
+
+<br>
+
+<p>📱 <strong>WhatsApp:</strong> +53 53886406</p>
+
+<p>📧 <strong>Correo:</strong> luis.007garcet@gmail.com</p>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>© 2026 Luis Adrián Garcés Ramírez | Web Developer</p>
+
+</footer>
+
+<script>
+
+/* MENU MOVIL */
+
+function toggleMenu(){
+
+document.getElementById("menu").classList.toggle("show")
+
+}
+
+/* PARTICULAS */
+
+const canvas=document.getElementById("particles")
+const ctx=canvas.getContext("2d")
+
+canvas.width=window.innerWidth
+canvas.height=window.innerHeight
+
+let particles=[]
+
+for(let i=0;i<100;i++){
+
+particles.push({
+
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2,
+dx:(Math.random()-0.5)*0.7,
+dy:(Math.random()-0.5)*0.7
+
+})
+
+}
+
+function draw(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height)
+
+particles.forEach(p=>{
+
+ctx.beginPath()
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2)
+ctx.fillStyle="#38bdf8"
+ctx.fill()
+
+p.x+=p.dx
+p.y+=p.dy
+
+if(p.x<0||p.x>canvas.width)p.dx*=-1
+if(p.y<0||p.y>canvas.height)p.dy*=-1
+
+})
+
+requestAnimationFrame(draw)
+
+}
+
+draw()
+
+/* ANIMACION SCROLL */
+
+function reveal(){
+
+let reveals=document.querySelectorAll(".reveal")
+
+for(let i=0;i<reveals.length;i++){
+
+let windowHeight=window.innerHeight
+let elementTop=reveals[i].getBoundingClientRect().top
+let visible=120
+
+if(elementTop < windowHeight-visible){
+
+reveals[i].classList.add("show")
+
+}
+
+}
+
+}
+
+window.addEventListener("scroll",reveal)
+
+</script>
+
+</body>
+</html>

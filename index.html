@@ -1,404 +1,153 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html><html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Luis Adrián Garcét Ramírez | Web Developer</title>
-
+<title>Portafolio | Luis Garcés</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
-}
-
+*{box-sizing:border-box}
 body{
-background:#0f172a;
-color:white;
-overflow-x:hidden;
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:#020617;
+  color:white;
+  overflow-x:hidden;
 }
-
-/* PARTICULAS */
-
-#particles{
-position:fixed;
-width:100%;
-height:100%;
-z-index:-1;
+canvas#bg{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
 }
-
-/* NAVBAR */
-
-nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 8%;
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(10px);
-position:sticky;
-top:0;
-z-index:100;
+header{
+  text-align:center;
+  padding:80px 20px;
 }
-
-nav h1{
-color:#38bdf8;
-font-size:20px;
+header h1{
+  font-size:48px;
+  margin:10px 0;
+  background:linear-gradient(90deg,#22d3ee,#0ea5e9);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
+header p{color:#94a3b8;font-size:18px}section{ padding:60px 20px; max-width:1100px; margin:auto; }
 
-nav ul{
-display:flex;
-gap:25px;
-list-style:none;
-}
+.projects{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:25px; }
 
-nav a{
-text-decoration:none;
-color:white;
-font-size:15px;
-}
+.card{ background:rgba(2,6,23,0.6); padding:25px; border-radius:18px; backdrop-filter:blur(14px); box-shadow:0 0 25px rgba(14,165,233,0.3); transition:0.4s; } .card:hover{ transform:translateY(-10px) scale(1.04); box-shadow:0 0 50px rgba(14,165,233,0.9); }
 
-/* MENU MOVIL */
+.btn{ display:inline-block; margin-top:15px; padding:10px 15px; background:#0ea5e9; border-radius:8px; text-decoration:none; color:white; font-size:14px; }
 
-.menu-btn{
-display:none;
-font-size:28px;
-cursor:pointer;
-}
+.about{ text-align:center; max-width:700px; margin:auto; color:#cbd5f5; line-height:1.6; }
 
-/* HERO */
+.timeline{ margin-top:40px; } .step{ margin-bottom:20px; padding-left:15px; border-left:3px solid #0ea5e9; }
 
-.hero{
-text-align:center;
-padding:90px 20px;
-}
+.contact{ text-align:center; margin-top:50px; }
 
-.hero h2{
-font-size:42px;
-margin-bottom:10px;
-}
+.toggle{ position:fixed; top:20px; right:20px; background:#0ea5e9; border:none; padding:10px; border-radius:8px; cursor:pointer; }
 
-.hero p{
-max-width:600px;
-margin:auto;
-font-size:18px;
-}
+.light{ background:#f1f5f9; color:black; }
 
-/* SECCIONES */
+footer{ text-align:center; padding:20px; color:#64748b; } </style>
 
-section{
-padding:80px 10%;
-}
-
-.title{
-text-align:center;
-margin-bottom:50px;
-font-size:32px;
-color:#38bdf8;
-}
-
-/* GRID */
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
-}
-
-/* TARJETAS */
-
-.card{
-background:#020617;
-padding:30px;
-border-radius:12px;
-transition:.3s;
-}
-
-.card:hover{
-transform:translateY(-8px);
-}
-
-/* CONTACTO */
-
-.contact{
-text-align:center;
-font-size:20px;
-line-height:2;
-}
-
-.contact strong{
-color:#38bdf8;
-}
-
-footer{
-text-align:center;
-padding:30px;
-background:#020617;
-}
-
-/* ANIMACIONES */
-
-.reveal{
-opacity:0;
-transform:translateY(40px);
-transition:1s;
-}
-
-.show{
-opacity:1;
-transform:translateY(0);
-}
-
-/* RESPONSIVE */
-
-@media(max-width:768px){
-
-nav ul{
-position:absolute;
-top:70px;
-left:0;
-width:100%;
-background:#020617;
-flex-direction:column;
-text-align:center;
-display:none;
-padding:20px 0;
-}
-
-nav ul.show{
-display:flex;
-}
-
-.menu-btn{
-display:block;
-}
-
-.hero h2{
-font-size:30px;
-}
-
-.hero p{
-font-size:16px;
-}
-
-section{
-padding:60px 20px;
-}
-
-}
-
-</style>
 </head>
+<body><canvas id="bg"></canvas> <button class="toggle" onclick="toggleMode()">🌙</button>
 
-<body>
-
-<canvas id="particles"></canvas>
-
-<nav>
-
-<h1>Luis Garcet</h1>
-
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
-
-<ul id="menu">
-<li><a href="#sobre">Sobre</a></li>
-<li><a href="#servicios">Servicios</a></li>
-<li><a href="#proyectos">Proyectos</a></li>
-<li><a href="#contacto">Contacto</a></li>
-</ul>
-
-</nav>
-
-<section class="hero">
-
-<h2>Luis Adrián Garcét Ramírez</h2>
-
-<p>
-Desarrollador Web Freelancer especializado en HTML, CSS y JavaScript.
-Creo páginas web modernas, rápidas y económicas para empresas y emprendedores.
-</p>
-
+<header>
+  <h1>Luis Garcet</h1>
+  <p>Desarrollador Web Freelancer especializado en HTML, CSS y JavaScript. </p>
+</header><section class="about">
+  <h2>👨‍💻 Sobre mí</h2>
+  <p>
+    Soy desarrollador web enfocado en crear app interactivas.
+    He construido proyectos como juegos, apps de mensajería, sistemas de inventario y herramientas productivas.
+    Mi enfoque es crear interfaces atractivas con lógica sólida.
+  </p>
 </section>
-
-<section id="sobre">
-
-<h2 class="title reveal">Sobre mí</h2>
-
-<div class="card reveal">
-
-<p>
-Soy programador freelancer con pasión por el desarrollo web.
-Creo sitios web rápidos, modernos y optimizados para cualquier dispositivo.
-Trabajo con clientes en proyectos pequeños, medianos y grandes.
-</p>
-
+<section>
+  <h2>🚀 Proyectos</h2>
+  <div class="projects"><div class="card">
+  <h3>🎮 Tetris PRO</h3>
+  <p>Juego completo con niveles, sonido y sistema de puntuación.</p>
+  <a class="btn" href="https://youtube.com/shorts/Vj_QYxOmZjg?si=0jO99YflsM_JnoIi">Ver proyecto</a>
 </div>
 
+<div class="card">
+  <h3>💬 Chat App</h3>
+  <p>App tipo chat con una IA que se combietre en un asistente virtual con heramientas como calculadora, recordatorio, juegos y muchas cosas mas.</p>
+  <a class="btn" href="https://youtube.com/shorts/OIhwpjTIkmw?si=WL8RdZOUy4l8qI0k">Ver proyecto</a>
+</div>
+
+<div class="card">
+  <h3>🧠 MiniUniverso</h3>
+  <p>Universo de herramientas con notas, recordatorios, calculadora, minijuego y reloj.</p>
+  <a class="btn" href="https://luisgarcet7.github.io/MiniUniverso.github.io">Ver proyecto</a>
+</div>
+
+<div class="card">
+  <h3>🧮 Inventarios</h3>
+  <p>Inventarios personalisados listos para cualquier negocio.</p>
+  <a class="btn" href="https://youtube.com/shorts/DD5g_9sSGBM?si=E3oUCuUg_dspG04D">Ver proyecto</a>
+</div>
+
+  </div>
+</section><section class="timeline">
+  <h2>📈 Mi progreso</h2>
+  <div class="step">✔ Especializado en HTML, CSS y JavaScript</div>
+  <div class="step">✔ Creé proyectos reales funcionales</div>
+  <div class="step">✔ Construí interfaces modernas</div>
+  <div class="step">✔ Sistemas de inventario</div>
+  <div class="step">✔ Menu digitales</div>
+  <div class="step">✔ Prototipos de IA</div>
+  <div class="step">✔ Control de finanzas  </div>
+  <div class="step">✔ Muchas Cosas Más</div>
+  <div class="step">🚀 Próximo: Backend y apps en tiempo real</div>
+</section><section class="contact">
+  <h2> Contacto</h2>
+  <p>luis.007garcet@gmail.com</p>
+  <a class="btn" href="mailto:luis.007garcet@gmail.com">Escríbeme</a>
+  <p>📞 +53 53886406</p>
+  <a class="btn" href="https://wa.me/+5353886406">Whatsapp</a>
 </section>
-
-<section id="servicios">
-
-<h2 class="title reveal">Servicios</h2>
-
-<div class="grid">
-
-<div class="card reveal">
-<h3>Desarrollo Web</h3>
-<p>Creación de páginas web modernas y profesionales.</p>
-</div>
-
-<div class="card reveal">
-<h3>Optimización Web</h3>
-<p>Mejora de velocidad y rendimiento.</p>
-</div>
-
-<div class="card reveal">
-<h3>Diseño Responsive</h3>
-<p>Webs adaptadas a móvil, tablet y ordenador.</p>
-</div>
-
-</div>
-
-</section>
-
-<section id="proyectos">
-
-<h2 class="title reveal">Proyectos</h2>
-
-<div class="grid">
-
-<div class="card reveal">
-<h3>Sistema Inventario</h3>
-<p>Aplicación web para control de productos.</p>
-</div>
-
-<div class="card reveal">
-<h3>Página Comercial</h3>
-<p>Sitio web moderno para negocios.</p>
-</div>
-
-<div class="card reveal">
-<h3>App Contabilidad</h3>
-<p>Aplicación web para finanzas.</p>
-</div>
-
-</div>
-
-</section>
-
-<section id="contacto">
-
-<h2 class="title reveal">Contacto</h2>
-
-<div class="contact reveal">
-
-<p>
-Si tienes un proyecto o necesitas una página web profesional,
-puedes contactarme.
-</p>
-
-<br>
-
-<p>📱 <strong>WhatsApp:</strong> +53 53886406</p>
-
-<p>📧 <strong>Correo:</strong> luis.007garcet@gmail.com</p>
-
-</div>
-
-</section>
-
 <footer>
-
-<p>© 2026 Luis Adrián Garcés Ramírez | Web Developer</p>
-
+  © 2026 Luis Garcet★
 </footer>
-
 <script>
-
-/* MENU MOVIL */
-
-function toggleMenu(){
-
-document.getElementById("menu").classList.toggle("show")
-
+function toggleMode(){
+  document.body.classList.toggle('light');
 }
 
-/* PARTICULAS */
+const canvas=document.getElementById('bg');
+const ctx=canvas.getContext('2d');
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
 
-const canvas=document.getElementById("particles")
-const ctx=canvas.getContext("2d")
-
-canvas.width=window.innerWidth
-canvas.height=window.innerHeight
-
-let particles=[]
-
-for(let i=0;i<100;i++){
-
-particles.push({
-
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-r:Math.random()*2,
-dx:(Math.random()-0.5)*0.7,
-dy:(Math.random()-0.5)*0.7
-
-})
-
+let particles=[];
+for(let i=0;i<80;i++){
+  particles.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    r:Math.random()*2,
+    dx:Math.random()-0.5,
+    dy:Math.random()-0.5
+  });
 }
 
-function draw(){
-
-ctx.clearRect(0,0,canvas.width,canvas.height)
-
-particles.forEach(p=>{
-
-ctx.beginPath()
-ctx.arc(p.x,p.y,p.r,0,Math.PI*2)
-ctx.fillStyle="#38bdf8"
-ctx.fill()
-
-p.x+=p.dx
-p.y+=p.dy
-
-if(p.x<0||p.x>canvas.width)p.dx*=-1
-if(p.y<0||p.y>canvas.height)p.dy*=-1
-
-})
-
-requestAnimationFrame(draw)
-
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle='#0ea5e9';
+    ctx.fill();
+    p.x+=p.dx;
+    p.y+=p.dy;
+    if(p.x<0||p.x>canvas.width) p.dx*=-1;
+    if(p.y<0||p.y>canvas.height) p.dy*=-1;
+  });
+  requestAnimationFrame(animate);
 }
-
-draw()
-
-/* ANIMACION SCROLL */
-
-function reveal(){
-
-let reveals=document.querySelectorAll(".reveal")
-
-for(let i=0;i<reveals.length;i++){
-
-let windowHeight=window.innerHeight
-let elementTop=reveals[i].getBoundingClientRect().top
-let visible=120
-
-if(elementTop < windowHeight-visible){
-
-reveals[i].classList.add("show")
-
-}
-
-}
-
-}
-
-window.addEventListener("scroll",reveal)
-
+animate();
 </script>
-
 </body>
 </html>
